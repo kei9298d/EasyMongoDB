@@ -6,9 +6,8 @@ MongoDBを簡単に使えるようにした、RapperClass.
 
 ### Install
 ```
-composer require vlucas/phpdotenv
-composer require mongodb/mongodb
-git clone ...
+git clone https://github.com/kei9298d/EazyMongoDB.git
+composer install
 ```
 
 ### Init
