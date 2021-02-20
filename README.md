@@ -1,14 +1,18 @@
-## Install
+# EazyMongoDB
+
+MongoDBを簡単に使えるようにした、RapperClass.
+
+## How-to-use
+
+### Install
 ```
 composer require vlucas/phpdotenv
 composer require mongodb/mongodb
+git clone ...
 ```
 
-# How-to-use
-
-## init
-in `index.html`
-
+### Init
+see `index.html`
 ```
 require('./vendor/autoload.php');
 require('./lib/mongodb.class.php');
@@ -21,9 +25,22 @@ $dotenv->load();
 $dbh = new DB();
 ```
 
-## Insert
+Edit `.ENV`
+```
+# MongoDB Credencial
+db_host = 'localhost'
+db_user = ''
+db_pass = ''
 
-Function : `$dbh->insert();`
+# DB & Collections
+name_db = 'wankoromethod'
+name_collection = 'members'
+
+```
+
+### Insert
+Function : `$dbh->insert(<DB>, <COLLECTION>, <ARRAY>);`
+see `test/insert.test.php`
 ```
 insert_array[] = array('foo'=>;bar', 'hoge'=>'fumu');
 insert_array[] = ...
@@ -34,3 +51,17 @@ $collection_name = 'collection';
 $dbh->insert($db_name, $collection_name, $insert_array);
 ```
 
+### Select
+Function : `dbh->select(<DB>, <COLLECTION>, <WHERE>, <COMMUNS>);
+see `test/select.test.php`
+```
+// AND
+$where[] = array('twitter' => 'foo', 'pornhub' => 'anonymous');
+// OR
+$where[] = array('twitter' => 'bar');
+
+// get Colomuns.
+$ret_obj = array('name', 'twitter', 'github', 'pornhub');
+
+$ret = $dbh->select($db, $col, $where, $ret_obj);
+```
