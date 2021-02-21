@@ -133,18 +133,18 @@ class DB{
         if($db == '' || $collection == '') { return -1; }
         if(is_array($wheres) === false ) { return -1; }
  
-        // UpdateするCollection
-        $dbn = sprintf('%s.%s', $db, $collection);
-
-        $bulk = new MongoDB\Driver\BulkWrite;
-
-        foreach($wheres as $where) {
-            $bulk->delete($where);
-        }
-        
-        // Write
-        $ret = $this->dbh->executeBulkWrite($dbn, $bulk);
-        return($ret);
+         // UpdateするCollection
+         $dbn = sprintf('%s.%s', $db, $collection);
+ 
+         $bulk = new MongoDB\Driver\BulkWrite;
+ 
+         foreach($wheres as $where) {
+             $bulk->delete($where);
+         }
+         
+         // Write
+         $ret = $this->dbh->executeBulkWrite($dbn, $bulk);
+         return($ret);
     }
  
 }

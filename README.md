@@ -22,9 +22,13 @@ $dotenv->load();
 
 // Create DB Handler
 $dbh = new DB();
+
+// Select DB & Collection.
+$db_name = 'db';
+$collection_name = 'collection';
 ```
 
-Edit `.ENV`
+Edit `.env`
 ```
 # MongoDB Credencial
 db_host = 'localhost'
@@ -38,20 +42,17 @@ name_collection = 'members'
 ```
 
 ### Insert
-Function : `$dbh->insert(<DB>, <COLLECTION>, <ARRAY>);`  
+Function : `$dbh->insert(<DB>, <COLLECTION>, <Array>);`  
 see `test/insert.test.php`
 ```
-insert_array[] = array('foo'=>;bar', 'hoge'=>'fumu');
-insert_array[] = ...
-
-$db_name = 'db';
-$collection_name = 'collection';
+$insert_array[] = array('foo'=>;bar', 'hoge'=>'fumu');
+//...
 
 $dbh->insert($db_name, $collection_name, $insert_array);
 ```
 
 ### Select
-Function : `dbh->select(<DB>, <COLLECTION>, <WHERE>, <COMMUNS>);  
+Function : `$dbh->select(<DB>, <COLLECTION>, <WHERE Array>, <COLUMNS Array>);`  
 see `test/select.test.php`
 ```
 // AND
@@ -59,14 +60,13 @@ $where[] = array('twitter' => 'foo', 'pornhub' => 'anonymous');
 // OR
 $where[] = array('twitter' => 'bar');
 
-// get Colomuns.
 $ret_obj = array('name', 'twitter', 'github', 'pornhub');
 
 $ret = $dbh->select($db, $col, $where, $ret_obj);
 ```
 
 ### Update
-Function : `dbh->select(<DB>, <COLLECTION>, <UPDATE_Ary>);  
+Function : `$dbh->select(<DB>, <COLLECTION>, <UPDATE_Array>);`  
 see `test/update.test.php`
 ```
 $updates[] = array(
@@ -79,7 +79,7 @@ $ret = $dbh->update($db, $col, $updates);
 ```
 
 ### Delete
-Function : `$dbh->delete(<DB>, <COLLECTION>, <WHERE>)  
+Function : `$dbh->delete(<DB>, <COLLECTION>, <WHERE>)`  
 see `test.delete.test.php`
 ```
 $where[] = array('pornhub' => 'anonymous');
