@@ -1,7 +1,9 @@
 <?php
 
-$db = $_ENV['name_db'];
-$col = $_ENV['name_collection'];
+
+// ----------------
+// Insert Test.
+// ----------------
 
 $array[] = array('name' => 'まゆしぃ', 'twitter' => 'mayu___cs');
 $array[] = array('name' => 'kei', 'twitter' => 'kei9298d');
