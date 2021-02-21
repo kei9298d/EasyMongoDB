@@ -30,7 +30,7 @@ class DB{
     // ----------------
     //  Insert
     // ----------------
-    public function insert ($db, $collection, $array) {
+    public function insert ($db, $collection, $inserts) {
        // $db- - DB名
        // $collection - 対象のコレクション
        // $array - 連想配列 (挿入値)
@@ -45,9 +45,9 @@ class DB{
         // Insertに使うオブジェクト
         $bulk = new MongoDB\Driver\BulkWrite;
 
-        foreach($array as $row) {
+        foreach($inserts as $insert) {
             // 連想配列を1行づつ、Bulkにinsertしていく
-            $bulk->insert($row);
+            $bulk->insert($insert);
         }
         
         // Write
@@ -80,6 +80,7 @@ class DB{
             $res_ary = $this->dbh->executeQuery($dbn, $query)->toArray();
     
             // 検索結果を連想配列に纏め直す
+            $ret_ary = array();
             foreach ( $res_ary as $res ) {
                 foreach ($ret_obj_ary as $ret_obj ){
                     if (isset($res->$ret_obj) === true) $ret[$ret_obj] = $res->$ret_obj;

@@ -10,6 +10,13 @@ $dotenv->load();
 // Create DB Handler
 $dbh = new DB();
 
+$db     = $_ENV['name_db'];
+$col    = $_ENV['name_collection'];
+
+// ----------------
+// Test codes.
+// ----------------
+
 //require_once('./test/insert.test.php');
 //require_once('./test/update.test.php');
 //require_once('./test/delete.test.php');

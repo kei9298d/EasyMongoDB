@@ -1,7 +1,8 @@
 <?php
 
-$db = $_ENV['name_db'];
-$col = $_ENV['name_collection'];
+// ----------------
+// Update Test.
+// ----------------
 
 $updates[] = array(
     'where' => array('twitter' => 'kei9298d'),
