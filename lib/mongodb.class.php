@@ -91,4 +91,33 @@ class DB{
 
         return($ret_ary);
     }
+    // ----------------
+    //  Update
+    // ----------------
+    public function update ($db, $collection, $updates) {
+       // $db- - DB名
+       // $collection - 対象のコレクション
+       // $array - 連想配列 (挿入値)
+
+        // 簡単なエラーチェック
+       if($db == '' || $collection == '') { return -1; }
+       if(is_array($updates) === false ) { return -1; }
+
+        // UpdateするCollection
+        $dbn = sprintf('%s.%s', $db, $collection);
+
+        $bulk = new MongoDB\Driver\BulkWrite;
+
+        foreach($updates as $update) {
+            $bulk->update(
+                $update['where'],
+                array( '$set' => $update['update'])
+            );
+        }
+        
+        // Write
+        $ret = $this->dbh->executeBulkWrite($dbn, $bulk);
+        return($ret);
+    }
+
 }

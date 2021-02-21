@@ -38,7 +38,7 @@ name_collection = 'members'
 ```
 
 ### Insert
-Function : `$dbh->insert(<DB>, <COLLECTION>, <ARRAY>);`
+Function : `$dbh->insert(<DB>, <COLLECTION>, <ARRAY>);`  
 see `test/insert.test.php`
 ```
 insert_array[] = array('foo'=>;bar', 'hoge'=>'fumu');
@@ -51,7 +51,7 @@ $dbh->insert($db_name, $collection_name, $insert_array);
 ```
 
 ### Select
-Function : `dbh->select(<DB>, <COLLECTION>, <WHERE>, <COMMUNS>);
+Function : `dbh->select(<DB>, <COLLECTION>, <WHERE>, <COMMUNS>);  
 see `test/select.test.php`
 ```
 // AND
@@ -63,4 +63,17 @@ $where[] = array('twitter' => 'bar');
 $ret_obj = array('name', 'twitter', 'github', 'pornhub');
 
 $ret = $dbh->select($db, $col, $where, $ret_obj);
+```
+
+### Update
+Function : `dbh->select(<DB>, <COLLECTION>, <UPDATE_Ary>);  
+see `test/update.test.php`
+```
+$updates[] = array(
+    'where' => array('twitter' => 'kei9298d'),
+    'update' => array('pornhub' => 'anonymous', 'github' => 'kei9298d')
+);
+
+$ret = $dbh->update($db, $col, $updates);
+
 ```
