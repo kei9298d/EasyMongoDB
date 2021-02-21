@@ -1,4 +1,4 @@
-# EazyMongoDB
+# EasyMongoDB
 
 MongoDBを簡単に使えるようにした、RapperClass.
 
