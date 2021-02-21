@@ -91,6 +91,7 @@ class DB{
 
         return($ret_ary);
     }
+
     // ----------------
     //  Update
     // ----------------
@@ -120,4 +121,30 @@ class DB{
         return($ret);
     }
 
+    // ----------------
+    //  Delete
+    // ----------------
+    public function delete ($db, $collection, $wheres) {
+        // $db- - DB名
+        // $collection - 対象のコレクション
+        // $array - 連想配列 (挿入値)
+ 
+         // 簡単なエラーチェック
+        if($db == '' || $collection == '') { return -1; }
+        if(is_array($wheres) === false ) { return -1; }
+ 
+        // UpdateするCollection
+        $dbn = sprintf('%s.%s', $db, $collection);
+
+        $bulk = new MongoDB\Driver\BulkWrite;
+
+        foreach($wheres as $where) {
+            $bulk->delete($where);
+        }
+        
+        // Write
+        $ret = $this->dbh->executeBulkWrite($dbn, $bulk);
+        return($ret);
+    }
+ 
 }

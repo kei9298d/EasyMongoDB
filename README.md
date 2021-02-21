@@ -77,3 +77,12 @@ $updates[] = array(
 $ret = $dbh->update($db, $col, $updates);
 
 ```
+
+### Delete
+Function : `$dbh->delete(<DB>, <COLLECTION>, <WHERE>)  
+see `test.delete.test.php`
+```
+$where[] = array('pornhub' => 'anonymous');
+// ...
+$ret = $dbh->delete($db, $col, $where);
+```

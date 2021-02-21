@@ -11,5 +11,6 @@ $dotenv->load();
 $dbh = new DB();
 
 //require_once('./test/insert.test.php');
-require_once('./test/update.test.php');
-require_once('./test/select.test.php');
+//require_once('./test/update.test.php');
+//require_once('./test/delete.test.php');
+//require_once('./test/select.test.php');
