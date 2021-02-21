@@ -5,8 +5,8 @@
 // ----------------
 
 $updates[] = array(
-    'where' => array('twitter' => 'kei9298d'),
-    'update' => array('pornhub' => 'anonymous', 'github' => 'kei9298d')
+    'where' => array('service-a' => 'kei9298d'),
+    'update' => array('service-b' => 'anonymous', 'service-c' => 'kei9298d')
 );
 
 // Run

@@ -6,7 +6,7 @@ MongoDBを簡単に使えるようにした、RapperClass.
 
 ### Install
 ```
-git clone https://github.com/kei9298d/EazyMongoDB.git
+git clone https://github.com/kei9298d/EasyMongoDB.git
 composer install
 ```
 
@@ -56,11 +56,11 @@ Function : `$dbh->select(<DB>, <COLLECTION>, <WHERE Array>, <COLUMNS Array>);`
 see `test/select.test.php`
 ```
 // AND
-$where[] = array('twitter' => 'foo', 'pornhub' => 'anonymous');
+$where[] = array('service-a' => 'foo', 'service-b' => 'anonymous');
 // OR
-$where[] = array('twitter' => 'bar');
+$where[] = array('service-a' => 'bar');
 
-$ret_obj = array('name', 'twitter', 'github', 'pornhub');
+$ret_obj = array('name', 'service-a', 'service-b', 'service-c');
 
 $ret = $dbh->select($db, $col, $where, $ret_obj);
 ```
@@ -70,8 +70,8 @@ Function : `$dbh->select(<DB>, <COLLECTION>, <UPDATE_Array>);`
 see `test/update.test.php`
 ```
 $updates[] = array(
-    'where' => array('twitter' => 'kei9298d'),
-    'update' => array('pornhub' => 'anonymous', 'github' => 'kei9298d')
+    'where' => array('name' => 'kei9298d'),
+    'update' => array('service-b' => 'anonymous', 'service-c' => 'kei9298d')
 );
 
 $ret = $dbh->update($db, $col, $updates);
@@ -82,7 +82,7 @@ $ret = $dbh->update($db, $col, $updates);
 Function : `$dbh->delete(<DB>, <COLLECTION>, <WHERE>)`  
 see `test.delete.test.php`
 ```
-$where[] = array('pornhub' => 'anonymous');
+$where[] = array('service-b' => 'anonymous');
 // ...
 $ret = $dbh->delete($db, $col, $where);
 ```
